@@ -65,6 +65,7 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "WinMTR.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
@@ -325,6 +326,17 @@ BEGIN
 0x5f6b, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 0x6974, 0x3e70, 
 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x694c, 0x6b6e, 0x465f, 0x6c75, 
 0x546c, 0x7865, 0x5474, 0x6f6f, 0x746c, 0x7069, "\076" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_WINMTR_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
     0
 END
 

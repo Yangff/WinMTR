@@ -34,8 +34,8 @@ public:
 
 private:
 	void	ParseCommandLineParams(LPTSTR cmd, WinMTRDialog *wmtrdlg);
-	int		GetParamValue(LPTSTR cmd, char * param, char sparam, char *value);
-	int		GetHostNameParamValue(LPTSTR cmd, std::string& value);
+	int		GetParamValue(LPTSTR cmd, wchar_t * param, wchar_t sparam, wchar_t *value);
+	int		GetHostNameParamValue(LPTSTR cmd, std::wstring& value);
 
 };
 

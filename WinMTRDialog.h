@@ -86,7 +86,7 @@ public:
 	bool				hasUseDNSFromCmdLine;
 	WinMTRNet*			wmtrnet;
 
-	void SetHostName(const char *host);
+	void SetHostName(const wchar_t *host);
 	void SetInterval(float i);
 	void SetPingSize(int ps);
 	void SetMaxLRU(int mlru);
@@ -96,7 +96,7 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 
 	int m_autostart;
-	char msz_defaulthostname[1000];
+	wchar_t msz_defaulthostname[1000];
 	
 	HICON m_hIcon;
 
