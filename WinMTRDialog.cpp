@@ -696,12 +696,12 @@ void WinMTRDialog::OnCTTC()
 	OpenClipboard();
 	EmptyClipboard();
 	
-	clipbuffer = GlobalAlloc(GMEM_DDESHARE, source.GetLength()+1);
+	clipbuffer = GlobalAlloc(GMEM_DDESHARE, sizeof(wchar_t)*(source.GetLength()+1));
 	buffer = (wchar_t*)GlobalLock(clipbuffer);
 	lstrcpy(buffer, LPCTSTR(source));
 	GlobalUnlock(clipbuffer);
 	
-	SetClipboardData(CF_TEXT,clipbuffer);
+	SetClipboardData(CF_UNICODETEXT,clipbuffer);
 	CloseClipboard();
 }
 
@@ -749,12 +749,12 @@ void WinMTRDialog::OnCHTC()
 	OpenClipboard();
 	EmptyClipboard();
 	
-	clipbuffer = GlobalAlloc(GMEM_DDESHARE, source.GetLength()+1);
+	clipbuffer = GlobalAlloc(GMEM_DDESHARE, sizeof(wchar_t)*(source.GetLength()+1));
 	buffer = (wchar_t*)GlobalLock(clipbuffer);
 	lstrcpy(buffer, LPCTSTR(source));
 	GlobalUnlock(clipbuffer);
 	
-	SetClipboardData(CF_TEXT,clipbuffer);
+	SetClipboardData(CF_UNICODETEXT,clipbuffer);
 	CloseClipboard();
 }
 
@@ -792,7 +792,7 @@ void WinMTRDialog::OnEXPT()
 			wmtrnet->GetName(i, buf);
 			if( lstrcmp(buf,L"")==0 ) lstrcpy(buf,L"No response from host");
 		
-			wsprintf(t_buf, L"|%40s - %4d | %4d | %4d | %4d | %4d | %4d | %4d |\r\n" , 
+			wsprintf(t_buf, L"|%40ws - %4d | %4d | %4d | %4d | %4d | %4d | %4d |\r\n" , 
 					buf, wmtrnet->GetPercent(i),
 					wmtrnet->GetXmit(i), wmtrnet->GetReturned(i), wmtrnet->GetBest(i),
 					wmtrnet->GetAvg(i), wmtrnet->GetWorst(i), wmtrnet->GetLast(i));
@@ -807,9 +807,9 @@ void WinMTRDialog::OnEXPT()
 		lstrcat(f_buf, L"   ");
 		lstrcat(f_buf, (LPCTSTR)cs_tmp);
 
-		FILE *fp = _wfopen(dlg.GetPathName(), L"wt");
+		FILE *fp = _wfopen(dlg.GetPathName(), L"wb");
 		if(fp != NULL) {
-			fwprintf(fp, L"%ws", f_buf);
+			fwprintf(fp, f_buf);
 			fclose(fp);
 		}
 	}
@@ -862,9 +862,9 @@ void WinMTRDialog::OnEXPH()
 		wsprintf(t_buf, L"</table></body></html>\r\n"); 
 		lstrcat(f_buf, t_buf);
 
-		FILE *fp = _wfopen(dlg.GetPathName(), L"wt");
+		FILE *fp = _wfopen(dlg.GetPathName(), L"wb");
 		if(fp != NULL) {
-			fwprintf(fp, L"%ws", f_buf);
+			fwprintf(fp, f_buf);
 			fclose(fp);
 		}
 	}

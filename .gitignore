@@ -17,6 +17,9 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
+[Dd]ebug_x64/
+[Rr]elease_x64/
+[Rr]eleases/
 x64/
 x86/
 bld/
@@ -286,3 +289,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+*.dat
